@@ -8,7 +8,7 @@ async function getSongs(folder) {
     currfolder = folder;
     songs = []; // 🔥 Clear previous songs
 
-    let a = await fetch(`http://127.0.0.1:3000/${folder}`);
+    let a = await fetch(`/${folder}/`);
     let response = await a.text();
 
     let div = document.createElement("div");
@@ -19,7 +19,7 @@ async function getSongs(folder) {
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
         if (element.href.endsWith(".mp3")) {
-            songs.push(element.href.split(`http://127.0.0.1:3000/${folder}`)[1]);
+            songs.push(element.href.split(`/${folder}/`)[1]);
         }
     }
 
@@ -72,7 +72,7 @@ function playmusic(track) {
 }
 
 async function displayalbum() {
-    let a = await fetch(`http://127.0.0.1:3000/songs`);
+    let a = await fetch(`/songs/`);
     let response = await a.text();
 
     let div = document.createElement("div");
